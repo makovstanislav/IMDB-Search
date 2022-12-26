@@ -3,7 +3,7 @@ document.getElementById('search').addEventListener('click', getResult)
 
 async function getResult() {
     const lookFor = document.getElementById('placeholder').value
-    const response = await fetch('http://www.omdbapi.com/?apikey=455b65d4', {
+    const response = await fetch('http://www.omdbapi.com/?apikey=455b65d4%', {
         method: 'POST',
         body: {
             i: "tt3896198"
