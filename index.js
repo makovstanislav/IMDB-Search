@@ -1,24 +1,18 @@
-document.getElementById('search').addEventListener('click', getResult)
+let resultsContainer = document.getElementById('results-container')
 
-
-async function getResult() {
-    const lookFor = document.getElementById('placeholder').value
-    const response = await fetch('http://www.omdbapi.com/?apikey=455b65d4%', {
-        method: 'POST',
-        body: {
-            i: "tt3896198"
-        },
-        headers: {
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, X-Requested-With',
-            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
-            'Content-Type': 'application/json'
-        }
-    })
+const renderResults = async function getResult() {
+    const searchInput = document.getElementById('placeholder').value
+    resultsContainer.innerHTML = ''
+    const response = await fetch(`http://www.omdbapi.com/?s=${searchInput}&apikey=455b65d4`)
     const data = await response.json()
-    console.log(data)
-    /* document.getElementById('test').textContent = data.stringify */
+    console.log(data.Search)
+    for (const movie of data.Search) {
+        resultsContainer.innerHTML += `
+            <h2>${movie.Title}</h2>
+            <img src='${movie.Poster}'>
+            <hr>
+        `
+    }
 }
 
-
-
+document.getElementById('search').addEventListener('click', renderResults)
