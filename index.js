@@ -9,6 +9,9 @@ async function getResult() {
             i: "tt3896198"
         },
         headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, X-Requested-With',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
             'Content-Type': 'application/json'
         }
     })
