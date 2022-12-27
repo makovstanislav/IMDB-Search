@@ -1,5 +1,4 @@
 let resultsContainer = document.getElementById('results-container')
-let i = 0
 
 
 document.addEventListener('click', function(e) {
